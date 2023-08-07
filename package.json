@@ -1,0 +1,25 @@
+{
+  "name": "this.me",
+  "version": "1.1.1",
+  "description": "Building ourselves from the first recursive cycle step up.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/suiGn/this.me.git"
+  },
+  "keywords": [
+    "mLearning"
+  ],
+  "author": "suiGn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/suiGn/this.me/issues"
+  },
+  "homepage": "https://github.com/suiGn/this.me#readme",
+  "dependencies": {
+    "this.me": "^2.3.6"
+  }
+}
