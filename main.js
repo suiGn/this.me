@@ -64,34 +64,44 @@ function handleAtomCommand() {
 //.. THIS SECTION IS FOR HASHING PURPOSES ...//
 /* Create a function that computes the hash of the @src directory.
  'hash-src') to handle hashing when the relevant command is passed to the script.*/
- function getAllFilesFromSourceCode(directory) {
+ function getAllFiles(directory) {
   const entries = fs.readdirSync(directory, { withFileTypes: true });
   const files = entries.filter(fileDirent => fileDirent.isFile()).map(fileDirent => path.join(directory, fileDirent.name));
   const folders = entries.filter(folderDirent => folderDirent.isDirectory());
   for (const folder of folders) {
-      files.push(...getAllFilesFromSourceCode(path.join(directory, folder.name)));
+      files.push(...getAllFiles(path.join(directory, folder.name)));
   }
   return files;
 }
-function hashSourceCode(directoryPath) {
+function hashThis(directoryOrFilePath) {
   // Ensure path is absolute
-  if (!path.isAbsolute(directoryPath)) {
-      throw new Error('Directory path must be absolute.');
+  if (!path.isAbsolute(directoryOrFilePath)) {
+      throw new Error('Path must be absolute.');
   }
-  // Get all files from the directory recursively
-  const allFiles = getAllFilesFromSourceCode(directoryPath);
-  // Read all file content and concatenate it
-  const allContent = allFiles.map(file => fs.readFileSync(file)).join('');
+  let allContent = "";
+  // Check if it's a directory or a file
+  const stat = fs.statSync(directoryOrFilePath);
+  if (stat.isDirectory()) {
+      // Get all files from the directory recursively
+      const allFiles = getAllFiles(directoryOrFilePath);
+      // Read all file content and concatenate it
+      allContent = allFiles.map(file => fs.readFileSync(file)).join('');
+  } else if (stat.isFile()) {
+      // Read file content
+      allContent = fs.readFileSync(directoryOrFilePath);
+  } else {
+      throw new Error('Provided path is neither a directory nor a file.');
+  }
   // Hash the content using SHA256 (or another hashing algorithm)
   const hash = crypto.createHash('sha256').update(allContent).digest('hex');
   return hash;
 }
 
-function HashSrc() {
+function hashSrc() {
   try {
       // Adjust this to the exact location of your @src directory
       const srcDirPath = path.resolve(__dirname, '@src');
-      const hash = hashSourceCode(srcDirPath);
+      const hash = hashThis(srcDirPath);
       console.log(`Hash of @src directory: ${hash}`);
   } catch (error) {
       console.error('Error hashing @src directory:', error.message);
@@ -104,7 +114,7 @@ displayWelcomeMessage();
 // COMMAND HANDLERS
 switch(args[0]) {
   case 'hash-src':
-        HashSrc();
+        hashSrc();
         break;
   case 'viewer':
       handleViewerCommand();
@@ -120,7 +130,7 @@ module.exports = {
   cleaker,
   neurons,
   Atom,
-  getAllFilesFromSourceCode,
-  hashSourceCode,
-  HashSrc
+  getAllFiles,
+  hashThis,
+  hashSrc
 };
