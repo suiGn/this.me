@@ -1,3 +1,5 @@
+<img src="./_._.svg" alt="SVG Image" width="123" height="123" style="width123px; height:123px;">
+
 # .me Suite - Your AI Playground
 For every recursive action, there's a repercussion.
 
