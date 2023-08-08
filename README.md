@@ -3,41 +3,66 @@
 # .me Suite - Your AI Playground
 For every recursive action, there's a repercussion.
 
-### Introduction
-
-Welcome to the .me suite, a comprehensive and interactive command-line interface designed to supercharge your AI projects. Whether you're working on neural networks, experimenting with deep learning models, or exploring other cutting-edge technologies, .me suite provides you with the tools and modules you need.
-
-### Key Features
-
-neurons.me: A specialized module for managing neural networks. Create, update, and delete neurons, layers, and complex neural network architectures effortlessly.
-**cleaker:** An extension for working with the Cleaker application.
-**Modular Design:** Easily extend the suite with additional modules, each with its own CLI functionality.
-**Interactive Shell:** Navigate through various options and functionalities using a user-friendly command-line interface.
-Installation
-
 ```
-npm install @sui.gn/me
+npm install this.me
 ```
 
-### Usage
+### Conceptual Flow:
 
-After installation, you can launch the .me suite by running:
+- [ ] Set up your context with [this.me.](https://www.npmjs.com/package/this.me)
+- [ ] Create a neural network using [neurons.me](https://www.neurons.me).
+- [ ] Define the data you'd like your neural network to recognize or process with [this.](https://www.neurons.me/this) modules.
+- [ ] Use [this.be](https://www.npmjs.com/package/this.be) to maintain a state or context, - watching over  [This](https://www.neurons.me/this) and any other states you define for example.
+- [ ] Define desired status and handlers, [be.this](https://www.npmjs.com/package/be.this).
+- [ ] Keep [i.mlearning](https://www.npmjs.com/package/i.mlearning).
 
+### Dependencies:   
+
+```json
+"dependencies": {
+    "be.this": "^1.1.3",
+    "cleaker": "^2.2.9",
+    "i.mlearning": "^2.1.7",
+    "netget": "^2.1.6",
+    "neurons.me": "^2.6.3",
+    "this.atom": "^1.0.3",
+    "this.audio": "^1.0.0",
+    "this.be": "^2.1.3",
+    "this.dom": "^1.0.0",
+    "this.pixel": "^3.3.5",
+    "this.pixelgrid": "^3.3.2",
+    "this.text": "^1.0.0",
+    "v.path": "^2.1.7"
+  },
 ```
-npx .me
-```
 
-Follow the on-screen prompts to navigate through the available modules and options.
 
-### Future Projections
 
-The *.me suite i*s continuously evolving with plans for even more exciting features:
+# Context of Abstraction for Machine Learning Standardization
 
-**Additional Modules:** We'll be adding more modules to cater to various AI domains, such as natural language processing, computer vision, and more.
-**Enhanced Usability:** Ongoing improvements to the user interface will make navigation and task execution even more intuitive.
-**Community Contributions:** Open for community-driven enhancements, allowing developers to contribute modules and features to broaden the suite's capabilities.
-Contribute
-Contributions are welcome! Feel free to open an issue or submit a pull request on the GitHub repository.
+Traditional web development elements, from images to audio, are designed mainly for display and interaction. But what if they could be seamlessly converted into standardized formats primed for machine learning? That's the vision behind the **this.** modules.
+
+An Introduction to the this. JavaScript Library: Standardizing Web Development Elements for Machine Learning.
+
+## Principles Behind the this. Library:
+
+- ### **Abstraction for ML:**
+
+ The library's core principle is to abstract traditional web elements so that they're immediately primed for machine learning. It's about viewing web content not just as data but as structured, consistent, and standardized data.
+
+- ### **Built on Web Standards:** 
+
+Rooted in JavaScript, the this. library builds upon public web development standards. The aim is to ensure that developers remain within familiar territories, even as they venture into the world of machine learning.
+
+- ### **Open and Collaborative:** 
+
+The this. library champions open standards. By leveraging public web standards, it invites collaboration, hoping to create a community that continually refines and enhances the bridge between web development and machine learning.
+
+
+
+[neurons.me](https://www.neurons.me)
+
+[neurons.me/this](https://www.neurons.me/this)
 
 ### License
 
