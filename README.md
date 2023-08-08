@@ -2,11 +2,12 @@
 
 # .me Suite - Your AI Playground
 For every recursive action, there's a repercussion.
-**Docs:** [this.me](https://www.neurons.me/this-me)
 
 ```
 npm install this.me
 ```
+
+**Docs:** [this.me](https://www.neurons.me/this-me)
 
 ### Conceptual Flow:
 
