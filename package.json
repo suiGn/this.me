@@ -1,9 +1,13 @@
 {
   "name": "this.me",
-  "version": "1.1.1",
-  "description": "Building ourselves from the first recursive cycle step up.",
-  "main": "index.js",
+  "version": "2.3.9",
+  "description": "This.me should This.be",
+  "bin": {
+    ".me": "./main.js"
+  },
+  "main": "main.js",
   "scripts": {
+    "start": "node main.js",
     "test": "test"
   },
   "repository": {
@@ -11,12 +15,26 @@
     "url": "git+https://github.com/suiGn/this.me.git"
   },
   "keywords": [
-    "mLearning"
+    "me",
+    "DeepLearning",
+    "neuralnetworks",
+    "uthopias"
   ],
   "author": "suiGn",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/suiGn/this.me/issues"
+  "dependencies": {
+    "be.this": "^1.1.3",
+    "cleaker": "^2.2.9",
+    "i.mlearning": "^2.1.7",
+    "netget": "^2.1.6",
+    "neurons.me": "^2.6.3",
+    "this.atom": "^1.0.3",
+    "this.audio": "^1.0.0",
+    "this.be": "^2.1.3",
+    "this.dom": "^1.0.0",
+    "this.pixel": "^3.3.5",
+    "this.text": "^1.0.0",
+    "v.path": "^2.1.7"
   },
   "homepage": "https://github.com/suiGn/this.me#readme",
   "dependencies": {
