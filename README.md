@@ -1,4 +1,5 @@
 # .me Suite - Your AI Playground
+For every recursive action, there's a repercussion.
 
 ### Introduction
 
