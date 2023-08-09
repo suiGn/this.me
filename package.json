@@ -1,6 +1,6 @@
 {
   "name": "this.me",
-  "version": "2.5.2",
+  "version": "2.5.3",
   "description": "This.me should This.be",
   "bin": {
     ".me": "./main.js"
@@ -23,20 +23,20 @@
   "author": "suiGn",
   "license": "MIT",
   "dependencies": {
-    "be.this": "^1.1.3",
-    "cleaker": "^2.2.9",
+    "be.this": "^1.1.6",
+    "cleaker": "^2.3.4",
     "fs": "^0.0.1-security",
-    "i.mlearning": "^2.1.7",
-    "netget": "^2.1.6",
-    "neurons.me": "^2.6.3",
-    "this.atom": "^1.0.3",
-    "this.audio": "^1.0.0",
-    "this.be": "^2.1.3",
-    "this.dom": "^1.0.0",
-    "this.pixel": "^3.3.5",
+    "i.mlearning": "^2.2.0",
+    "netget": "^2.2.1",
+    "neurons.me": "^2.7.1",
+    "this.atom": "^1.0.6",
+    "this.audio": "^1.0.6",
+    "this.be": "^2.1.6",
+    "this.dom": "^1.0.4",
+    "this.pixel": "^3.3.6",
     "this.pixelgrid": "^3.3.2",
-    "this.text": "^1.0.0",
-    "v.path": "^2.1.7"
+    "this.text": "^1.0.5",
+    "v.path": "^2.2.0"
   },
   "homepage": "https://github.com/suiGn/this.me#readme"
 }
