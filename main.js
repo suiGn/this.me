@@ -31,8 +31,12 @@ give me one sec please...
 };
 
 //User Context.
+const Me = require("./me");
+const me = new Me();
 const os = require('os');
-console.log(`Running as user: ${os.userInfo().username}`);
+console.log(`Host_Session@ ${os.userInfo().username}`);
+const cleaked = new cleaker();
+console.log(cleaked.role);
 //ATOMS ELECTRONS AND PARTICLES IN PROGRESS...
 //WE WILL RUN OUR NODE PROCCESSES IN ELECTRON WINDOWS AND EACH ATOM WILL HOLD ELECTRONS WHICH HOLDS THE PROCESSES
 //THUS WE WILL KNOW HOW CHARGED AN ATOM IS BY THE NUMBER OF ELECTRONS IT HAS AND HOW MANY PROCESSES IT IS RUNNING.
