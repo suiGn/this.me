@@ -7,6 +7,7 @@ const fs = require('fs');
 const args = process.argv.slice(2);
 const neurons = require("neurons.me");
 const cleaker = require("cleaker");
+const netget = require("netget");
 const Atom = require("this.atom");
 // Your CLI logic goes here, display welcome message, handle other commands, etc.
 function displayWelcomeMessage() {
@@ -101,6 +102,7 @@ switch(args[0]) {
 
 module.exports = {
   cleaker,
+  netget,
   neurons,
   Atom,
   getAllFiles,

@@ -12,7 +12,6 @@ console.log('Creating a new neuron with neurons.createNeuron()');
 let neuron = neurons.createNeuron();
 console.log(neuron);
 
-
 // Custom options for the neuron
 let options = {
   name: 'x', // Custom name for the neuron
