@@ -1,6 +1,6 @@
 {
   "name": "this.me",
-  "version": "2.5.5",
+  "version": "2.5.6",
   "description": "This.me should This.be",
   "bin": {
     ".me": "./main.js"
@@ -27,7 +27,7 @@
     "cleaker": "^2.3.4",
     "fs": "^0.0.1-security",
     "i.mlearning": "^2.2.0",
-    "netget": "^2.2.1",
+    "netget": "^2.2.3",
     "neurons.me": "^2.7.1",
     "this.atom":"1.0.8",
     "this.audio": "^1.0.6",
