@@ -9,6 +9,17 @@ const neurons = require("neurons.me");
 const cleaker = require("cleaker");
 const netget = require("netget");
 const Atom = require("this.atom");
+//User Context.
+const Me = require("./me");
+const os = require('os');
+const me = new Me(
+  'Me', 
+  'replace@email.me', 
+  'replaceDateOfBirth',
+   { city: 'replaceCity',
+    country: 'replaceCountry' }, 
+    { theme: 'dark' }
+    );
 // Your CLI logic goes here, display welcome message, handle other commands, etc.
 function displayWelcomeMessage() {
   console.log(`
@@ -26,17 +37,13 @@ function displayWelcomeMessage() {
 [---------------------------------.me-----------]
 -^^^^^^^^zzzz...
 Welcome to .me - Your AI Playground
-give me one sec please...
 `);
+console.log(me.getPublicKey());
+const cleaked = new cleaker();
+console.log(`Host_Session@ ${os.userInfo().username}`);
+console.log("System Role: ", cleaked.role);
 };
 
-//User Context.
-const Me = require("./me");
-const me = new Me();
-const os = require('os');
-console.log(`Host_Session@ ${os.userInfo().username}`);
-const cleaked = new cleaker();
-console.log(cleaked.role);
 //ATOMS ELECTRONS AND PARTICLES IN PROGRESS...
 //WE WILL RUN OUR NODE PROCCESSES IN ELECTRON WINDOWS AND EACH ATOM WILL HOLD ELECTRONS WHICH HOLDS THE PROCESSES
 //THUS WE WILL KNOW HOW CHARGED AN ATOM IS BY THE NUMBER OF ELECTRONS IT HAS AND HOW MANY PROCESSES IT IS RUNNING.
@@ -86,14 +93,11 @@ function handleAtomCommand() {
   }
 }
 
-// Display the welcome message
-displayWelcomeMessage();
-
 // COMMAND HANDLERS
 switch(args[0]) {
   case 'hash-src':
-        hashSrc();
-        break;
+      hashSrc();
+      break;
   case 'viewer':
       handleViewerCommand();
       break;
@@ -101,7 +105,10 @@ switch(args[0]) {
       handleAtomCommand();
       break;
   default:
-      console.log('Command not recognized. Use "viewer" or "atom" as arguments.');
+      // Here you can define what you'd like to happen when no arguments are passed.
+      displayWelcomeMessage();
+      // And any other functionality you'd like to execute
+      break;
 }
 
 module.exports = {
