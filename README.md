@@ -36,7 +36,7 @@ let me = require('this.me');
   While this approach offers many benefits, including enhanced privacy and user sovereignty, it's still nascent and requires a paradigm shift in development, deployment, and user education.
 
 # Setting up your Context. 	👋🏻👋🏼👋🏽👋🏾👋🏿
-Defining the environment and context in which your code runs, especially when you're interacting with intelligent agents or services like me.
+Defining the **environment** and context in which your code runs, especially when you're interacting with intelligent agents or services like **me.**
 Having a clear declaration of the environment and the context can have a series of implications for security, interoperability, and clarity. The codebase is often vast, dynamic, and continually evolving. Given the dynamic nature of such environments, ensuring the integrity of the code and data becomes paramount. You wouldn't want an agent to execute or rely on code that has been tampered with or is different from the expected version. This is where hashing comes into play.
 
 The **SHA256 cryptographic hash function** is used to produce a unique, fixed-length sequence of characters (a hash) for the data. This setup does a thorough job of hashing the content of files or entire directories.
@@ -47,7 +47,11 @@ Even a tiny change in the content will result in a completely different hash.
 
 ### Introduction:
 
-Run node demo.js for quick example.const Me = require('./me.js');
+Run node **demo.js** for quick example.
+
+```js
+const Me = require('./me.js');
+```
 
 ```js
 // Create a new Me instance
