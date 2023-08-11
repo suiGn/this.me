@@ -8,7 +8,6 @@ const args = process.argv.slice(2);
 const neurons = require("neurons.me");
 const cleaker = require("cleaker");
 const netget = require("netget");
-const Atom = require("this.atom");
 //User Context.
 const Me = require("./me");
 const os = require('os');
@@ -44,38 +43,6 @@ console.log(`Host_Session@ ${os.userInfo().username}`);
 console.log("System Role: ", cleaked.role);
 };
 
-//ATOMS ELECTRONS AND PARTICLES IN PROGRESS...
-//WE WILL RUN OUR NODE PROCCESSES IN ELECTRON WINDOWS AND EACH ATOM WILL HOLD ELECTRONS WHICH HOLDS THE PROCESSES
-//THUS WE WILL KNOW HOW CHARGED AN ATOM IS BY THE NUMBER OF ELECTRONS IT HAS AND HOW MANY PROCESSES IT IS RUNNING.
-//WE WILL ALSO BE ABLE TO SEE THE PROCESSES RUNNING IN EACH ELECTRON AND THE ATOMS THAT ARE RUNNING THEM.
-function handleViewerCommand() {
-  const atom = new Atom();
-  atom.createElectron('viewer', {
-      width: 800,
-      height: 600,
-      viewFile: path.resolve(__dirname, 'viewer.html')
-  });
-  atom.showElectron('viewer');
-}
-function handleAtomCommand() {
-  const atom = new Atom();
-  atom.createElectron('electron1', {
-      width: 800,
-      height: 600,
-      viewFile: './view1.html'
-  });
-  atom.createElectron('electron2', {
-      width: 600,
-      height: 400,
-      viewFile: './view2.html'
-  });
-  atom.createElectron('electron3', {
-      width: 1000,
-      height: 800,
-      viewFile: './view3.html'
-  });
-  atom.showAtom();
-}
 
 //.. THIS SECTION IS FOR HASHING PURPOSES ...//
 /* Create a function that computes the hash of the @src directory.
@@ -102,7 +69,7 @@ switch(args[0]) {
       handleViewerCommand();
       break;
   case 'atom':
-      handleAtomCommand();
+      console.log("Atom");
       break;
   default:
       // Here you can define what you'd like to happen when no arguments are passed.
@@ -115,7 +82,6 @@ module.exports = {
   cleaker,
   netget,
   neurons,
-  Atom,
   getAllFiles,
   hashThis,
   hashSrc
