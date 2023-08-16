@@ -1,6 +1,6 @@
 {
   "name": "this.me",
-  "version": "2.6.3",
+  "version": "2.7.0",
   "description": "This.me should This.be",
   "bin": {
     ".me": "./main.js"
@@ -29,13 +29,15 @@
     "i.mlearning": "^2.2.0",
     "netget": "^2.2.3",
     "neurons.me": "^2.7.1",
-    "this.atom":"1.2.1",
+    "this.atom":"1.2.2",
     "this.audio": "^1.0.6",
     "this.be": "^2.1.6",
     "this.dom": "^1.0.4",
     "this.pixel": "^3.3.6",
+    "this.wallet":"^1.0.2",
     "this.pixelgrid": "^3.3.2",
     "this.text": "^1.0.5",
+    "this.video":"^1.0.0",
     "v.path": "^2.2.0"
   },
   "homepage": "https://github.com/suiGn/this.me#readme"
