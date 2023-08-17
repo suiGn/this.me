@@ -1,5 +1,6 @@
-// me.js
+//me.js
 const crypto = require('crypto');
+
 class Me {
     constructor(name, email, birthDate, location = {}, preferences = {}) {
         this.name = name;
@@ -38,6 +39,5 @@ class Me {
     updateLocation(newLocation) {
         this.location = newLocation;
     }
-    // Add other methods as required.
 }
 module.exports = Me;
