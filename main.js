@@ -9,7 +9,7 @@ const neurons = require("neurons.me");
 const cleaker = require("cleaker");
 const netget = require("netget");
 //User Context.
-const Me = require("this.me/me");
+const Me = require("./me");
 const os = require('os');
 const me = new Me(
   'Me', 
@@ -48,7 +48,7 @@ console.log("System Role: ", cleaked.role);
 /* Create a function that computes the hash of the @src directory.
  'hashSrc') to handle hashing when the relevant command is passed to the script.*/
  const { fork } = require('child_process');
- const { getAllFiles, hashThis } = require('this.me/crypto/hash/hashing');
+ const { getAllFiles, hashThis } = require('./crypto/hash/hashing');
  function hashSrc() {
   try {
       // Adjust this to the exact location of your @src directory
