@@ -19,7 +19,7 @@ const me = new Me(
     country: 'replaceCountry' }, 
     { theme: 'dark' }
     );
-// Your CLI logic goes here, display welcome message, handle other commands, etc.
+//CLI LOGIC
 function displayWelcomeMessage() {
   console.log(`
           ___________                                 
@@ -48,7 +48,7 @@ console.log("System Role: ", cleaked.role);
 /* Create a function that computes the hash of the @src directory.
  'hashSrc') to handle hashing when the relevant command is passed to the script.*/
  const { fork } = require('child_process');
- const { getAllFiles, hashThis } = require('this.me/hash/hashing');
+ const { getAllFiles, hashThis } = require('this.me/crypto/hash/hashing');
  function hashSrc() {
   try {
       // Adjust this to the exact location of your @src directory
@@ -59,7 +59,6 @@ console.log("System Role: ", cleaked.role);
       console.error('Error hashing @src directory:', error.message);
   }
 }
-
 // COMMAND HANDLERS
 switch(args[0]) {
   case 'hash-src':

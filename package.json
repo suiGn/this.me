@@ -1,6 +1,6 @@
 {
   "name": "this.me",
-  "version": "2.7.2",
+  "version": "2.7.3",
   "description": "This.me should This.be",
   "bin": {
     ".me": "./main.js"
@@ -29,7 +29,7 @@
     "i.mlearning": "^2.2.0",
     "netget": "^2.2.3",
     "neurons.me": "^2.7.1",
-    "this.atom":"1.2.2",
+    "this.atom":"^1.3.2",
     "this.audio": "^1.0.6",
     "this.be": "^2.1.6",
     "this.dom": "^1.0.4",
