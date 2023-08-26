@@ -96,7 +96,7 @@ const isValidSignature = suign.verifySignature(dataToSign, signature);
 console.log("Is the signature valid?", isValidSignature);
 ```
 
-**`Me`** is a digital identity representation within a network. Rather than relying on traditional methods like username-password combinations, `Me` encapsulates the essence of an entity with cryptographic guarantees.
+**`Me`** is a digital identity representation. Rather than relying on traditional methods like username-password combinations, `Me` encapsulates the essence of an entity with cryptographic guarantees.
 
 ### Key Features:
 
@@ -133,7 +133,7 @@ console.log("Is the signature valid?", isValidSignature);
 
 ------
 
-Remember, while `Me` provides enhanced security, the principle of key management is paramount. Losing access to the private key might mean losing access to the associated identity.
+Remember, while `Me` provides enhanced security, the principle of key management is paramount. **Losing access to the private key might mean losing access to the associated identity.**
 
 Let's delve into the importance of such declarations:
 
