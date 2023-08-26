@@ -5,15 +5,12 @@ const path = require("path");
 const crypto = require('crypto');
 const fs = require('fs');
 const args = process.argv.slice(2);
-const neurons = require("neurons.me");
-const cleaker = require("cleaker");
-const netget = require("netget");
 //User Context.
-const Me = require("./me");
 const os = require('os');
+const Me = require('./Me');
 const me = new Me(
   'Me', 
-  'replace@email.me', 
+  'enter your email.', 
   'replaceDateOfBirth',
    { city: 'replaceCity',
     country: 'replaceCountry' }, 
@@ -35,15 +32,11 @@ function displayWelcomeMessage() {
 |     ^^^^^^^^^^^^^^^^^^^^                      | 
 [---------------------------------.me-----------]
 -^^^^^^^^zzzz...
-Welcome to .me - Your AI Playground
+Welcome to .me.
 `);
-console.log(me.getPublicKey());
-const cleaked = new cleaker();
 console.log(`Host_Session@ ${os.userInfo().username}`);
-console.log("System Role: ", cleaked.role);
+console.log(`v.path@ ${os.homedir()}`);
 };
-
-
 //.. THIS SECTION IS FOR HASHING PURPOSES ...//
 /* Create a function that computes the hash of the @src directory.
  'hashSrc') to handle hashing when the relevant command is passed to the script.*/
@@ -52,7 +45,7 @@ console.log("System Role: ", cleaked.role);
  function hashSrc() {
   try {
       // Adjust this to the exact location of your @src directory
-      const srcDirPath = path.resolve(__dirname, '@src');
+      const srcDirPath = path.resolve(__dirname, '@me');
       const hash = hashThis(srcDirPath);
       console.log(`Hash of @src directory: ${hash}`);
   } catch (error) {
@@ -78,9 +71,6 @@ switch(args[0]) {
 }
 
 module.exports = {
-  cleaker,
-  netget,
-  neurons,
   getAllFiles,
   hashThis,
   hashSrc
