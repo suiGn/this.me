@@ -1,4 +1,4 @@
-const Me = require('./me2.js');
+const Me = require('../src/me2.js');
 // Create a new Me instance
 const suign = new Me('Suign Name', 'suign@email.com', '01/01/1990', { city: 'SampleCity', country: 'SampleCountry' }, { theme: 'dark', notifications: true });
 // Print out the public key (for demonstration purposes)

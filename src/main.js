@@ -7,7 +7,7 @@ const fs = require('fs');
 const args = process.argv.slice(2);
 //User Context.
 const os = require('os');
-const Me = require('./Me');
+const Me = require('./me');
 const me = new Me(
   'Me', 
   'enter your email.', 
