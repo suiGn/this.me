@@ -11,22 +11,23 @@
     "test": "test"
   },
   "build": "browserify src/me.js -s Me -o dist/me.bundle.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/suiGn/this.me.git"
-  },
   "keywords": [
     "me",
     "DeepLearning",
     "neuralnetworks",
     "uthopias"
   ],
-  "author": "suiGn",
-  "license": "MIT",
-  "homepage": "https://github.com/suiGn/this.me#readme",
   "devDependencies": {
     "browserify": "^17.0.0",
     "jsdoc": "^4.0.2"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/suiGn/this.me.git"
+  },
+  "homepage": "https://www.npmjs.com/package/this.me",
+  "docs": "https://suiGn.github.io/this.me",
+  "author": "suiGn",
+  "license": "MIT",
   "repoType": "NPM Package"
 }
