@@ -1,0 +1,331 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  ...
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>This.Me cli/main.js</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="style.css">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">This.Me</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                 
+                    
+                        <a
+                            class="link user-link "
+                            href="https://github.com/suiGn/neurons.me"
+                        >
+                            Github
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://neurons.me"
+                        >
+                            App
+                        </a>
+                    
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+                <div class="search-wrapper">
+                    <input id="search" type="text" placeholder="Search docs..." class="input">
+                </div>
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-CLI.html">CLI</a></li></ul><h3>Classes</h3><ul><li><a href="Me.html">Me</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>cli/main.js</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>#!/usr/bin/env node
+/**
+ * @module CLI
+ * @description Command Line Interface Functionalities for .me
+ * Author: SuiGn
+ */
+
+import os from 'os';
+import Me from '../me.js';
+import program from 'commander';
+import inquirer from 'inquirer';
+import fs from 'fs';
+import path from 'path';
+import crypto from 'crypto';
+
+program
+    .command('user &lt;username> &lt;pin>')
+    .description('Authenticate and start a session for a given user')
+    .action((username, pin) => {
+        console.log(`Attempting to authenticate user: ${username}`);
+        // Authentication logic here
+    });
+
+program
+    .option('-o, --options', 'View options and commands');
+
+/**
+ * Display a welcome message to the user.
+ */
+function welcomeToMe() {
+    console.log(`
+          ___________                                 
+         [------------]                              
+         | .--------. |                             
+         | |01010101| |       __________              
+         | |11010101| |      /__________\             
+[--------|  --------  |------|   --*--  |-------]
+|        [----_-.-----]      |o ======  |       | 
+|       ______|_|_______     |__________|       | 
+|      /  %%%%%%%%%%%%  \                       | 
+|     /  %%%%%%%%%%%%%%  \                      | 
+|     ^^^^^^^^^^^^^^^^^^^^                      | 
+[---------------------------------.me-----------]
+-^^^^^^^^...
+Welcome to .me.
+`);
+    console.log(`Host_Session@ ${os.userInfo().username}`);
+    console.log(`v.path@ ${os.homedir()}/this.me`);
+}
+
+/**
+ * Prompts the user to select an action and returns their choice.
+ * @returns {Promise&lt;string>} The user's choice.
+ */
+async function getUserChoice() {
+  const choices = ['View Existing Profiles', 'Create New Profile', 'Exit'];
+  const answer = await inquirer.prompt([{
+      type: 'list',
+      name: 'action',
+      message: 'What would you like to do?',
+      choices: choices
+  }]);
+  return answer.action;
+}
+
+/**
+* Prompts the user for details to create a new profile.
+* @returns {Promise&lt;Me>} The new Me object with user details.
+*/
+async function getNewProfileDetails() {
+  const questions = [
+      {
+          type: 'input',
+          name: 'name',
+          message: 'What is your first name?',
+          // Add validation as needed
+      },
+      {
+          type: 'input',
+          name: 'lastname',
+          message: 'What is your last name?',
+          // Add validation as needed
+      },
+      {
+          type: 'input',
+          name: 'birthday',
+          message: 'What is your birthday? (YYYY-MM-DD)',
+          // Add validation as needed
+      },
+      {
+          type: 'password',
+          name: 'password',
+          message: 'Choose a password:',
+          // Add validation as needed
+      },
+      {
+          type: 'input',
+          name: 'pin',
+          message: 'Choose a PIN:',
+          // Add validation as needed
+      },
+      // ... Add more questions as needed
+  ];
+  const userDetails = await inquirer.prompt(questions);
+  return new Me(
+      userDetails.name, 
+      userDetails.lastname, 
+      userDetails.birthday,
+      userDetails.password, 
+      userDetails.pin
+  );
+}
+
+/**
+* Writes the .me object to the filesystem.
+* @param {Me} meObject - The Me object to be saved.
+*/
+function writeMeObjectToFile(meObject) {
+  const meDirectory = path.join(os.homedir(), '.thisme');
+  if (!fs.existsSync(meDirectory)) {
+      fs.mkdirSync(meDirectory, { recursive: true });
+  }
+
+  const filePath = path.join(meDirectory, `${meObject.name}.me`);
+  // Consider encrypting the data here before writing to the filesystem
+  fs.writeFileSync(filePath, JSON.stringify(meObject.getIdentityObject()));
+  console.log('Profile created successfully.');
+}
+
+/**
+* Function to display options and commands.
+*/
+function displayOptionsAndCommands() {
+  console.log(program.helpInformation());
+}
+
+/**
+* Main function to handle the CLI interactions.
+* Continuously prompts the user for actions until an exit command is given.
+*/
+async function main() {
+  welcomeToMe();
+  let exit = false;
+  while (!exit) {
+      const choice = await getUserChoice();
+      switch (choice) {
+          case 'View Existing Profiles':
+              console.log('Existing profiles will be displayed here.');
+              break;
+              case 'Create New Profile':
+                const meObject = await getNewProfileDetails();
+                writeMeObjectToFile(meObject);
+                break;
+          case 'Exit':
+              console.log('Exiting .me CLI.');
+              exit = true;
+              break;
+          default:
+              console.log('Invalid choice. Please try again.');
+      }
+  }
+}
+
+if (process.argv.length > 2) {
+  program.parse(process.argv);
+} else {
+  main();
+}
+
+// Error handling for CLI
+process.on('uncaughtException', (err) => {
+  console.error('An error occurred in the CLI:', err.message);
+  process.exit(1);
+});
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>
+<style>
+.center-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 89px;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+</style>
+<div class="center-div">
+  <img src="https://suign.github.io/neurons.me/neurons_logo.png" alt="Witness our Seal.">
+</div>
+<a href="http://neurons.me" target="_blank">neurons.me</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+<script src="scripts/search.js"> </script>
+
+
+</body>
+</html>

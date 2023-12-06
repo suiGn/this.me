@@ -1,25 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>JSDoc: Home</title>
 
-    <script src="scripts/prettify/prettify.js"> </script>
-    <script src="scripts/prettify/lang-css.js"> </script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+<head>
+  ...
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>This.Me Home</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="style.css">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
 </head>
 
-<body>
 
-<div id="main">
 
-    <h1 class="page-title">Home</h1>
-
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
     
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">This.Me</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                 
+                    
+                        <a
+                            class="link user-link "
+                            href="https://github.com/suiGn/neurons.me"
+                        >
+                            Github
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://neurons.me"
+                        >
+                            App
+                        </a>
+                    
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+                <div class="search-wrapper">
+                    <input id="search" type="text" placeholder="Search docs..." class="input">
+                </div>
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-CLI.html">CLI</a></li></ul><h3>Classes</h3><ul><li><a href="Me.html">Me</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p></p>
+                    <h1>Home</h1>
+                </header>
+                
 
 
 
@@ -42,24 +123,130 @@
 
 
 
+    <section>
+        <article><img src="./_._.svg" alt="SVG Image" width="123" height="123" style="width123px; height:123px;">
+<h1>This.Me</h1>
+<p><strong>This.Me</strong> is a digital identity representation of <strong>Me</strong> as it encapsulates the essence of an entity which is then passed for cryptographic guarantees.</p>
+<p>Users no longer depend on centralized authorities for <strong>identity and data management</strong>. They hold the keys (literally) to their identity and data.</p>
+<p>Services become more <strong>user-centric,</strong> providing services based on cryptographic proofs rather than centralized authorities.</p>
+<p>While this approach offers many benefits, including enhanced privacy and user sovereignty, it's still nascent and requires a paradigm shift in development, deployment, and user education.</p>
+<p>Here, you don't just own your identity; you seal it with cryptographic brilliance, untouched and ungoverned by any other.</p>
+<h2>Getting Started:</h2>
+<pre class="prettyprint source lang-bash"><code>npm i -g me
+</code></pre>
+<h3>Require it:</h3>
+<pre class="prettyprint source lang-js"><code>const me = require('this.me');
+</code></pre>
+<h3>Usage Example:</h3>
+<p>Use it like this:</p>
+<pre class="prettyprint source lang-js"><code>const ThisMe = require('this.me');
+const user = new ThisMe('John', 'Doe', '1990-01-01', 'mypassword123', '1234');
+const identityObject = user.getIdentityObject();
+// identityObject can now be passed to Cleaker for hashing
+</code></pre>
+<h2>Understanding .ME</h2>
+<h5>Structure of this.me Package:</h5>
+<p><strong>User Data Model:</strong> Define a class or object structure to hold the user's data.
+<strong>Data Validation:</strong> Functions to validate the input data.
+<strong>Data Processing:</strong> Preparing data for hashing (by Cleaker).
+<strong>Exporting Data:</strong> A method to export the processed data in a format that Cleaker can accept.</p>
+<h1>Setting up your Context. 	👋🏻👋🏼👋🏽👋🏾👋🏿</h1>
+<p>Defining the <strong>environment</strong> and context in which your code runs, especially when you're interacting with intelligent agents or services like <strong>me.</strong></p>
+<p>Having a clear declaration of the environment and the context can have a series of implications for security, interoperability, and clarity. The codebase is often vast, dynamic, and continually evolving. Given the dynamic nature of such environments, ensuring the integrity of the code and data becomes paramount. You wouldn't want an agent to execute or rely on code that has been tampered with or is different from the expected version. This is where hashing comes into play.</p>
+<hr>
+<p><code>.me</code> objects to serve as both a local identity on the user's host machine and as an identity within a larger network. When a <code>.me</code> object is authenticated on a network, it can access data not only on the local host but also from other nodes within that network. Conversely, if it's not authenticated or recognized by the network, it should only access local data. Here's how this could be structured:</p>
+<h3>Local and Network Identity Management</h3>
+<ol>
+<li><strong>Local Identity</strong>:
+<ul>
+<li>When a <code>.me</code> object is created, it's initially configured with access to local host resources.</li>
+<li>Users can manage their local profile, which includes their personal settings, preferences, and local data access permissions.</li>
+</ul>
+</li>
+<li><strong>Network Identity</strong>:
+<ul>
+<li>To access resources on the network, a <code>.me</code> object must be authenticated against the network, possibly by a central authority or a decentralized consensus mechanism.</li>
+<li>Once authenticated, the <code>.me</code> object's hash is recognized across the network, granting the user access to network resources according to their permissions.</li>
+</ul>
+</li>
+<li><strong>Access Control</strong>:
+<ul>
+<li>Both local and network resources use access control lists (ACLs) that are tied to the <code>.me</code> object's hash.</li>
+<li>These ACLs determine what resources the <code>.me</code> object can access and the level of interaction permitted (read, write, execute).</li>
+</ul>
+</li>
+<li><strong>Data Fetching</strong>:
+<ul>
+<li>When fetching data, the system checks if the <code>.me</code> object is authenticated within the network.</li>
+<li>If authenticated, the <code>.me</code> object can retrieve data from across the network based on the established ACLs.</li>
+<li>If not authenticated, the <code>.me</code> object is limited to retrieving data from the local host.</li>
+</ul>
+</li>
+<li><strong>CLI Functionality</strong>:
+<ul>
+<li>The CLI tool facilitates the creation of <code>.me</code> objects, management of profiles, and authentication processes.</li>
+<li>It could include commands to &quot;login&quot; to the network, &quot;logout&quot;, or &quot;sync&quot; local profiles with network profiles.</li>
+</ul>
+</li>
+<li><strong>Data Sharing and Security</strong>:
+<ul>
+<li>Data sharing across the network should be secure, with encryption mechanisms in place to protect data in transit and at rest.</li>
+<li>The <code>.me</code> object's unique hash can be part of the encryption key, ensuring that only the intended <code>.me</code> object can decrypt and access the shared data.</li>
+</ul>
+</li>
+</ol>
+<h3>Example CLI Commands</h3>
+<ul>
+<li><code>me init</code>: Initializes a new <code>.me</code> object on the local host.</li>
+<li><code>me login</code>: Authenticates the <code>.me</code> object against the network to access network resources.</li>
+<li><code>me logout</code>: De-authenticates the <code>.me</code> object from the network, reverting to local-only access.</li>
+<li><code>me sync</code>: Synchronizes local <code>.me</code> object data with the network profile.</li>
+<li><code>me fetch</code>: Retrieves data from the local host or network based on authentication status.</li>
+</ul>
+<p>By implementing this dual identity system, you enable a seamless transition for users between operating solely on their local device and engaging with a broader network, all while maintaining strict control over their data access rights.</p></article>
+    </section>
 
 
 
 
 
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>
+<style>
+.center-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 89px;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+</style>
+<div class="center-div">
+  <img src="https://suign.github.io/neurons.me/neurons_logo.png" alt="Witness our Seal.">
 </div>
-
-<nav>
-    <h2><a href="index.html">Home</a></h2>
-</nav>
-
-<br class="clear">
-
-<footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Tue Nov 21 2023 12:16:31 GMT-0500 (Eastern Standard Time)
-</footer>
-
-<script> prettyPrint(); </script>
+<a href="http://neurons.me" target="_blank">neurons.me</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
 <script src="scripts/linenumber.js"> </script>
+
+<script src="scripts/search.js"> </script>
+
+
 </body>
 </html>

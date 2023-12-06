@@ -1,21 +1,22 @@
 {
   "name": "this.me",
   "version": "2.7.7",
-  "description": "A package for user-centric identity and data management",
+  "description": "A package to setup a user-centric system identity. Starts by creating a .me object, you can add your own properties to it. This is me. This.me who is here",
   "bin": {
-    ".me": "./main.js"
+    ".me": "./src/cli/main.js"
   },
-  "main": "./src/me-node.js",
+  "type": "module",
+  "main": "index.js",
   "scripts": {
-    "start": "node src/me-node.js",
+    "start": "node index.js",
     "test": "test"
   },
   "build": "browserify src/me.js -s Me -o dist/me.bundle.js",
   "keywords": [
-    "me",
-    "DeepLearning",
-    "neuralnetworks",
-    "uthopias"
+    "this.me",
+    "user",
+    "user-centric system",
+    "Data Sovereignty"
   ],
   "devDependencies": {
     "browserify": "^17.0.0",
@@ -29,5 +30,8 @@
   "docs": "https://suiGn.github.io/this.me",
   "author": "suiGn",
   "license": "MIT",
-  "repoType": "NPM Package"
+  "repoType": "NPM Package",
+  "dependencies": {
+    "inquirer": "^9.2.12"
+  }
 }
