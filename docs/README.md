@@ -1,4 +1,4 @@
-<img src="./_._.svg" alt="SVG Image" width="123" height="123" style="width123px; height:123px;">
+<img src="	https://suign.github.io/neurons.me/neurons_logo.png" alt="SVG Image" width="123" height="123" style="width123px; height:123px;">
 
 # This.Me  
 
@@ -8,14 +8,12 @@ Users no longer depend on centralized authorities for **identity and data manage
 
 Services become more **user-centric,** providing services based on cryptographic proofs rather than centralized authorities.
 
-While this approach offers many benefits, including enhanced privacy and user sovereignty, it's still nascent and requires a paradigm shift in development, deployment, and user education.
-
 Here, you don't just own your identity; you seal it with cryptographic brilliance, untouched and ungoverned by any other. 
 
 ## Getting Started: 
 
 ```bash
-npm i -g me
+npm i -g this.me
 ```
 
 ### Require it:
