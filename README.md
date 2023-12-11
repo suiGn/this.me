@@ -2,6 +2,7 @@
 
 # This.Me  
 
+
 **This.Me** is a digital identity representation of **Me** as it encapsulates the essence of an entity which is then passed for cryptographic guarantees.
 
 Users no longer depend on centralized authorities for **identity and data management**. They hold the keys (literally) to their identity and data. 
