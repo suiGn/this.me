@@ -114,17 +114,17 @@ async function getNewProfileDetails() {
 
 /**
 * Writes the .me object to the filesystem.
-* @param {Me} meObject - The Me object to be saved.
+* @param {Me} meProfile - The Me object to be saved.
 */
-function writeMeObjectToFile(meObject) {
-  const meDirectory = path.join(os.homedir(), '.thisme');
+function writeMeObjectToFile(meProfile) {
+  const meDirectory = path.join(os.homedir(), '.me');
   if (!fs.existsSync(meDirectory)) {
       fs.mkdirSync(meDirectory, { recursive: true });
   }
 
-  const filePath = path.join(meDirectory, `${meObject.name}.me`);
+  const filePath = path.join(meDirectory, `${meProfile.name}.me`);
   // Consider encrypting the data here before writing to the filesystem
-  fs.writeFileSync(filePath, JSON.stringify(meObject.getIdentityObject()));
+  fs.writeFileSync(filePath, JSON.stringify(meProfile.getIdentityObject()));
   console.log('Profile created successfully.');
 }
 
@@ -133,6 +133,47 @@ function writeMeObjectToFile(meObject) {
 */
 function displayOptionsAndCommands() {
   console.log(program.helpInformation());
+}
+
+/**
+ * Lists all the .me profile file paths in the user's .me directory.
+ * @returns {string[]} An array of full file paths for each .me profile.
+ */
+function listMeProfiles() {
+  const meDirectory = path.join(os.homedir(), '.me');
+  if (fs.existsSync(meDirectory)) {
+      const profileFiles = fs.readdirSync(meDirectory)
+          .filter(file => file.endsWith('.me'));
+      return profileFiles.map(file => path.join(meDirectory, file));
+  } else {
+      console.log('No profiles found.');
+      return [];
+  }
+}
+
+/**
+ * Prompts the user to select a .me profile or go back to the main menu.
+ * @returns {Promise<string>} The file path of the selected profile or 'back' to go to the main menu.
+ */
+async function selectProfile() {
+  const profiles = listMeProfiles();
+  if (profiles.length === 0) {
+      console.log('No profiles found.');
+      return 'back';
+  }
+
+  const choices = profiles.map(file => ({
+      name: path.basename(file, '.me'),
+      value: file
+  })).concat([{ name: 'Go Back to Main Menu', value: 'back' }]);
+
+  const answer = await inquirer.prompt([{
+      type: 'list',
+      name: 'selectedProfile',
+      message: 'Select a profile to view or go back:',
+      choices: choices
+  }]);
+  return answer.selectedProfile;
 }
 
 /**
@@ -145,13 +186,19 @@ async function main() {
   while (!exit) {
       const choice = await getUserChoice();
       switch (choice) {
-          case 'View Existing Profiles':
-              console.log('Existing profiles will be displayed here.');
+         /**
+             * Handles the 'View Existing Profiles' choice.
+             * Lists and displays all existing .me profiles.
+             */
+         case 'View Existing Profiles':
+          const selectedProfile = await selectProfile();
+          if (selectedProfile === 'back') {
               break;
-              case 'Create New Profile':
-                const meObject = await getNewProfileDetails();
-                writeMeObjectToFile(meObject);
-                break;
+          }
+          // Read and display the selected profile details here
+          console.log(`Selected profile: ${selectedProfile}`);
+          // Add logic to handle the selected profile
+          break;
           case 'Exit':
               console.log('Exiting .me CLI.');
               exit = true;
@@ -173,5 +220,6 @@ process.on('uncaughtException', (err) => {
   console.error('An error occurred in the CLI:', err.message);
   process.exit(1);
 });
+
 
 
