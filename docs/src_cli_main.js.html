@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   ...
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>This.Me CLI</title>
+  <title>This.Me src/cli/main.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -104,312 +106,114 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p>Module</p>
-                    <h1>CLI</h1>
+                    <p>Source</p>
+                    <h1>src/cli/main.js</h1>
                 </header>
                 
 
 
 
-
-<section>
-
-<header>
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-            <div class="description">.Me Command Line Interface Functionalities.
- The CLI application's code structure is categorized into two main parts:
- Command Definitions and Interactive Shell.</div>
-        
-
-        
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="src_cli_main.js.html" class="button">View Source</a>
-            <span>
-                <a href="src_cli_main.js.html">src/cli/main.js</a>, <a href="src_cli_main.js.html#line11">line 11</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-        
-    
-    </div>
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <div class='vertical-section'>
-            <h1>Methods</h1>
-            <div class="members">
-            
-                <div class="member">
-
-
-    
-    <h4 class="name" id="~main">
-        <a class="href-link" href="#~main">#</a>
-        
-            
-                <span class='tag'>async</span>
-            
-                <span class='tag'>inner</span>
-            
-        
-        <span class="code-name">
-            
-                main<span class="signature">()</span><span class="type-signature"></span>
-            
-        </span>
-    </h4>
-    
-
-    
-    
-    <div class="description">
-        Main function to handle the CLI interactions.
-Continuously prompts the user for actions until an exit command is given.
-    </div>
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
     
-
-    
-
-    
-        <p class="tag-source">
-            <a href="src_cli_main.js.html" class="button">View Source</a>
-            <span>
-                <a href="src_cli_main.js.html">src/cli/main.js</a>, <a href="src_cli_main.js.html#line49">line 49</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-            
-                <div class="member">
-
-
-    
-    <h4 class="name" id="~welcome_Me">
-        <a class="href-link" href="#~welcome_Me">#</a>
-        
-            
-                <span class='tag'>inner</span>
-            
-        
-        <span class="code-name">
-            
-                welcome_Me<span class="signature">()</span><span class="type-signature"></span>
-            
-        </span>
-    </h4>
-    
-
-    
-    
-    <div class="description">
-        Welcome.
-    </div>
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="src_cli_main.js.html" class="button">View Source</a>
-            <span>
-                <a href="src_cli_main.js.html">src/cli/main.js</a>, <a href="src_cli_main.js.html#line35">line 35</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-            
-            </div>
-        </div>
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>#!/usr/bin/env node
+import os from 'os';
+import Me from '../me.js';
+import { Command } from 'commander';
+const program = new Command();
+import inquirer from 'inquirer';
+import fs from 'fs';
+import path from 'path';
+import printWelcome from './ascii_art/welcome.js';
+import crypto from 'crypto';
+/**
+ * @module CLI
+ * @description
+ * .Me Command Line Interface Functionalities.
+ *  The CLI application's code structure is categorized into two main parts:
+ *  Command Definitions and Interactive Shell.*/
+
+/***Command Definitions.*/
+/**
+ * The 'program' variable is an instance of 'Command' from the commander package. 
+ * It's utilized to define commands and options for the CLI application.*/
+program
+    .option('-o, --options', 'View options and commands.');
+
+program
+    .command('user &lt;username> &lt;pin>')
+    .description('Authenticate and start a .me session.')
+    .action((username, pin) => {
+        console.log(`Attempting to authenticate user: ${username}`);
+        // Authentication logic here
+    });
+
+import { selectMe, createMe, writeMe, listMeProfiles, selectProfile } from './interactive_shell/options.js';
+
+/** Welcome.
+@function welcome_Me
+*/
+function welcome_Me() {
+    printWelcome();
+    console.log(`Host_Session@ ${os.userInfo().username}`);
+    console.log(`v.path@ ${os.homedir()}/.me`);
+}
+
+/**
+* Main function to handle the CLI interactions.
+* Continuously prompts the user for actions until an exit command is given.
+*/
+
+async function main() {
+  welcome_Me();
+  let exit = false;
+  while (!exit) {
+      const choice = await selectMe();
+      switch (choice) {
+         /**
+             * Handles the 'View Existing Profiles' choice.
+             * Lists and displays all existing .me profiles.
+             */
+         case 'View Existing Profiles':
+          const selectedProfile = await selectProfile();
+          if (selectedProfile === 'back') {
+              break;
+          }
+          // Read and display the selected profile details here
+          console.log(`Selected profile: ${selectedProfile}`);
+          // Add logic to handle the selected profile
+          break;
+          case 'Create New Profile':
+            const newProfile = await createMe(); // Or createMe if that's the name you're using
+            writeMe(newProfile);
+            break;
+          case 'Exit':
+              console.log('Exiting .me CLI.');
+              exit = true;
+              break;
+          default:
+              console.log('Invalid choice. Please try again.');
+      }
+  }
+}
+
+if (process.argv.length > 2) {
+  program.parse(process.argv);
+} else {
+  main();
+}
+
+// Error handling for CLI
+process.on('uncaughtException', (err) => {
+  console.error('An error occurred in the CLI:', err.message);
+  process.exit(1);
+});
+
+
+
+</code></pre>
+        </article>
+    </section>
 
 
 

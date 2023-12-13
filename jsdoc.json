@@ -12,32 +12,30 @@
     "monospaceLinks": false,
     "search": true,
     "default": {
-        "staticFiles": {
-          "include": [
-              "./README.md"
-          ]
-        }
+      "staticFiles": {
+        "include": ["./README.md"]
+      }
     },
     "better-docs": {
-        "name": "This.Me",
-        "title": "This.Me", 
-        "css": "style.css",
-        "trackingCode": "...",
-  "hideGenerator": false,
-        "navLinks": [
-          {
-            "label": "all.This @Packages ",
-            "href": "https://suign.github.io/all.this/"
+      "name": "This.Me",
+      "title": "This.Me",
+      "css": "style.css",
+      "trackingCode": "...",
+      "hideGenerator": false,
+      "navLinks": [
+        {
+          "label": "all.This @Packages",
+          "href": "https://suign.github.io/all.this/"
         },
-            {
-                "label": "Github",
-                "href": "https://github.com/suiGn/neurons.me"
-            },
-            {
-                "label": "App",
-                "href": "https://neurons.me"
-            }
-        ]
+        {
+          "label": "Github",
+          "href": "https://github.com/suiGn/neurons.me"
+        },
+        {
+          "label": "App",
+          "href": "https://neurons.me"
+        }
+      ]
     }
-}
+  }
 }

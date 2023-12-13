@@ -62,7 +62,7 @@
                             class="link user-link "
                             href="https://suign.github.io/all.this/"
                         >
-                            all.This @Packages 
+                            all.This @Packages
                         </a>
                     
                         <a
@@ -97,7 +97,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-CLI.html">CLI</a></li></ul><h3>Classes</h3><ul><li><a href="Me.html">Me</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-00-Index.html">00-Index</a></li><li><a href="module-CLI.html">CLI</a></li></ul><h3>Classes</h3><ul><li><a href="Me.html">Me</a></li></ul></div>
                 
             </nav>
         </div>
@@ -131,12 +131,12 @@
 
 
     <section>
-        <article><img src="https://suign.github.io/neurons.me/neurons_logo.png" alt="SVG Image" width="123" height="123" style="width123px; height:123px;">
+        <article><img src="https://suign.github.io/this.me/neurons_logo.png" alt="SVG Image" width="123" height="123" style="width123px; height:123px;">
 <h1>This.Me</h1>
-<p><strong>This.Me</strong> is a digital identity representation of <strong>Me</strong> as it encapsulates the essence of an entity which is then passed for cryptographic guarantees.</p>
-<p>Users no longer depend on centralized authorities for <strong>identity and data management</strong>. They hold the keys (literally) to their identity and data.</p>
-<p>Services become more <strong>user-centric,</strong> providing services based on cryptographic proofs rather than centralized authorities.</p>
-<p>Here, you don't just own your identity; you seal it with cryptographic brilliance, untouched and ungoverned by any other.</p>
+<p><strong>This.Me</strong> is a digital identity representation of <strong>Me</strong> as it encapsulates the essence of an entity which is then passed for cryptographic guarantees.
+Users no longer depend on centralized authorities for <strong>identity and data management</strong>. They hold the keys (literally) to their identity and data.
+Services become more <strong>user-centric,</strong> providing services based on cryptographic proofs rather than centralized authorities.
+Here, you don't just own your identity; you seal it with cryptographic brilliance, untouched and ungoverned by any other.</p>
 <h2>Getting Started:</h2>
 <pre class="prettyprint source lang-bash"><code>npm i -g this.me
 </code></pre>
@@ -159,7 +159,6 @@ const identityObject = user.getIdentityObject();
 <h1>Setting up your Context. 	👋🏻👋🏼👋🏽👋🏾👋🏿</h1>
 <p>Defining the <strong>environment</strong> and context in which your code runs, especially when you're interacting with intelligent agents or services like <strong>me.</strong></p>
 <p>Having a clear declaration of the environment and the context can have a series of implications for security, interoperability, and clarity. The codebase is often vast, dynamic, and continually evolving. Given the dynamic nature of such environments, ensuring the integrity of the code and data becomes paramount. You wouldn't want an agent to execute or rely on code that has been tampered with or is different from the expected version. This is where hashing comes into play.</p>
-<hr>
 <p><code>.me</code> objects to serve as both a local identity on the user's host machine and as an identity within a larger network. When a <code>.me</code> object is authenticated on a network, it can access data not only on the local host but also from other nodes within that network. Conversely, if it's not authenticated or recognized by the network, it should only access local data. Here's how this could be structured:</p>
 <h3>Local and Network Identity Management</h3>
 <ol>
@@ -171,7 +170,7 @@ const identityObject = user.getIdentityObject();
 </li>
 <li><strong>Network Identity</strong>:
 <ul>
-<li>To access resources on the network, a <code>.me</code> object must be authenticated against the network, possibly by a central authority or a decentralized consensus mechanism.</li>
+<li>To access resources on the network, a <code>.me</code> object must be authenticated against the network.</li>
 <li>Once authenticated, the <code>.me</code> object's hash is recognized across the network, granting the user access to network resources according to their permissions.</li>
 </ul>
 </li>
@@ -191,7 +190,7 @@ const identityObject = user.getIdentityObject();
 <li><strong>CLI Functionality</strong>:
 <ul>
 <li>The CLI tool facilitates the creation of <code>.me</code> objects, management of profiles, and authentication processes.</li>
-<li>It could include commands to &quot;login&quot; to the network, &quot;logout&quot;, or &quot;sync&quot; local profiles with network profiles.</li>
+<li>It includes commands to &quot;login&quot; to the network, &quot;logout&quot;, or &quot;sync&quot; local profiles with network profiles.</li>
 </ul>
 </li>
 <li><strong>Data Sharing and Security</strong>:
@@ -201,7 +200,7 @@ const identityObject = user.getIdentityObject();
 </ul>
 </li>
 </ol>
-<h3>Example CLI Commands</h3>
+<h3>CLI Commands</h3>
 <ul>
 <li><code>me init</code>: Initializes a new <code>.me</code> object on the local host.</li>
 <li><code>me login</code>: Authenticates the <code>.me</code> object against the network to access network resources.</li>

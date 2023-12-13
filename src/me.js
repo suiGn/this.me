@@ -3,7 +3,7 @@
  */
 class Me {
     /**
-     * Create a ThisMe instance.
+     * Create a me instance.
      * @param {string} name - The first name of the user.
      * @param {string} lastname - The last name of the user.
      * @param {string} birthday - The birthday of the user in YYYY-MM-DD format.

@@ -1,10 +1,4 @@
 #!/usr/bin/env node
-/**
- * @module CLI
- * @description Command Line Interface Functionalities for .me
- * Author: SuiGn
- */
-
 import os from 'os';
 import Me from '../me.js';
 import { Command } from 'commander';
@@ -12,179 +6,51 @@ const program = new Command();
 import inquirer from 'inquirer';
 import fs from 'fs';
 import path from 'path';
+import printWelcome from './ascii_art/welcome.js';
 import crypto from 'crypto';
+/**
+ * @module CLI
+ * @description
+ * .Me Command Line Interface Functionalities.
+ *  The CLI application's code structure is categorized into two main parts:
+ *  Command Definitions and Interactive Shell.*/
+
+/***Command Definitions.*/
+/**
+ * The 'program' variable is an instance of 'Command' from the commander package. 
+ * It's utilized to define commands and options for the CLI application.*/
+program
+    .option('-o, --options', 'View options and commands.');
 
 program
     .command('user <username> <pin>')
-    .description('Authenticate and start a session for a given user')
+    .description('Authenticate and start a .me session.')
     .action((username, pin) => {
         console.log(`Attempting to authenticate user: ${username}`);
         // Authentication logic here
     });
 
-program
-    .option('-o, --options', 'View options and commands');
+import { selectMe, createMe, writeMe, listMeProfiles, selectProfile } from './interactive_shell/options.js';
 
-/**
- * Display a welcome message to the user.
- */
-function welcomeToMe() {
-    console.log(`
-          ___________                                 
-         [------------]                              
-         | .--------. |                             
-         | |01010101| |       __________              
-         | |11010101| |      /__________\             
-[--------|  --------  |------|   --*--  |-------]
-|        [----_-.-----]      |o ======  |       | 
-|       ______|_|_______     |__________|       | 
-|      /  %%%%%%%%%%%%  \                       | 
-|     /  %%%%%%%%%%%%%%  \                      | 
-|     ^^^^^^^^^^^^^^^^^^^^                      | 
-[---------------------------------.me-----------]
--^^^^^^^^...
-Welcome to .me.
-`);
+/** Welcome.
+@function welcome_Me
+*/
+function welcome_Me() {
+    printWelcome();
     console.log(`Host_Session@ ${os.userInfo().username}`);
-    console.log(`v.path@ ${os.homedir()}/this.me`);
-}
-
-/**
- * Prompts the user to select an action and returns their choice.
- * @returns {Promise<string>} The user's choice.
- */
-async function getUserChoice() {
-  const choices = ['View Existing Profiles', 'Create New Profile', 'Exit'];
-  const answer = await inquirer.prompt([{
-      type: 'list',
-      name: 'action',
-      message: 'What would you like to do?',
-      choices: choices
-  }]);
-  return answer.action;
-}
-
-/**
-* Prompts the user for details to create a new profile.
-* @returns {Promise<Me>} The new Me object with user details.
-*/
-async function getNewProfileDetails() {
-  const questions = [
-      {
-          type: 'input',
-          name: 'name',
-          message: 'What is your first name?',
-          // Add validation as needed
-      },
-      {
-          type: 'input',
-          name: 'lastname',
-          message: 'What is your last name?',
-          // Add validation as needed
-      },
-      {
-          type: 'input',
-          name: 'birthday',
-          message: 'What is your birthday? (YYYY-MM-DD)',
-          // Add validation as needed
-      },
-      {
-          type: 'password',
-          name: 'password',
-          message: 'Choose a password:',
-          // Add validation as needed
-      },
-      {
-          type: 'input',
-          name: 'pin',
-          message: 'Choose a PIN:',
-          // Add validation as needed
-      },
-      // ... Add more questions as needed
-  ];
-  const userDetails = await inquirer.prompt(questions);
-  return new Me(
-      userDetails.name, 
-      userDetails.lastname, 
-      userDetails.birthday,
-      userDetails.password, 
-      userDetails.pin
-  );
-}
-
-/**
-* Writes the .me object to the filesystem.
-* @param {Me} meProfile - The Me object to be saved.
-*/
-function writeMeObjectToFile(meProfile) {
-  const meDirectory = path.join(os.homedir(), '.me');
-  if (!fs.existsSync(meDirectory)) {
-      fs.mkdirSync(meDirectory, { recursive: true });
-  }
-
-  const filePath = path.join(meDirectory, `${meProfile.name}.me`);
-  // Consider encrypting the data here before writing to the filesystem
-  fs.writeFileSync(filePath, JSON.stringify(meProfile.getIdentityObject()));
-  console.log('Profile created successfully.');
-}
-
-/**
-* Function to display options and commands.
-*/
-function displayOptionsAndCommands() {
-  console.log(program.helpInformation());
-}
-
-/**
- * Lists all the .me profile file paths in the user's .me directory.
- * @returns {string[]} An array of full file paths for each .me profile.
- */
-function listMeProfiles() {
-  const meDirectory = path.join(os.homedir(), '.me');
-  if (fs.existsSync(meDirectory)) {
-      const profileFiles = fs.readdirSync(meDirectory)
-          .filter(file => file.endsWith('.me'));
-      return profileFiles.map(file => path.join(meDirectory, file));
-  } else {
-      console.log('No profiles found.');
-      return [];
-  }
-}
-
-/**
- * Prompts the user to select a .me profile or go back to the main menu.
- * @returns {Promise<string>} The file path of the selected profile or 'back' to go to the main menu.
- */
-async function selectProfile() {
-  const profiles = listMeProfiles();
-  if (profiles.length === 0) {
-      console.log('No profiles found.');
-      return 'back';
-  }
-
-  const choices = profiles.map(file => ({
-      name: path.basename(file, '.me'),
-      value: file
-  })).concat([{ name: 'Go Back to Main Menu', value: 'back' }]);
-
-  const answer = await inquirer.prompt([{
-      type: 'list',
-      name: 'selectedProfile',
-      message: 'Select a profile to view or go back:',
-      choices: choices
-  }]);
-  return answer.selectedProfile;
+    console.log(`v.path@ ${os.homedir()}/.me`);
 }
 
 /**
 * Main function to handle the CLI interactions.
 * Continuously prompts the user for actions until an exit command is given.
 */
+
 async function main() {
-  welcomeToMe();
+  welcome_Me();
   let exit = false;
   while (!exit) {
-      const choice = await getUserChoice();
+      const choice = await selectMe();
       switch (choice) {
          /**
              * Handles the 'View Existing Profiles' choice.
@@ -199,6 +65,10 @@ async function main() {
           console.log(`Selected profile: ${selectedProfile}`);
           // Add logic to handle the selected profile
           break;
+          case 'Create New Profile':
+            const newProfile = await createMe(); // Or createMe if that's the name you're using
+            writeMe(newProfile);
+            break;
           case 'Exit':
               console.log('Exiting .me CLI.');
               exit = true;
