@@ -1,77 +1,57 @@
-<img src="https://suign.github.io/this.me/neurons_logo.png" alt="SVG Image" width="123" height="123" style="width123px; height:123px;">
-
 # This.Me  
+<img src="./this.me.png" alt="SVG Image" style="width:89px;">
 
-**This.Me** is a digital identity representation of **Me** as it encapsulates the essence of an entity which is then passed for cryptographic guarantees.
-Users no longer depend on centralized authorities for **identity and data management**. They hold the keys (literally) to their identity and data. 
-Services become more **user-centric,** providing services based on cryptographic proofs rather than centralized authorities.
-Here, you don't just own your identity; you seal it with cryptographic brilliance, untouched and ungoverned by any other. 
+**This.Me** redefines digital identity management through a cryptographic lens. Each user is equipped with a unique **'Me'** identity, secured by public-private key cryptography, enabling robust autonomous identity verification and transactional security.
 
-## Getting Started: 
-```bash
-npm i -g this.me
-```
+**This.Me** goes beyond traditional security, incorporating hashing for unimpeachable data integrity and digital signatures for undeniable authenticity. Users gain unparalleled control over their digital footprint, marking a shift towards a user-centric model of data management.
 
-### Require it:
+In essence, **This.Me** grants users a self-sovereign digital identity, fully within their control and independent from external entities.
+
+### CLI Usage:
+
+Install globally to use `this.me` as a CLI tool:
+
 ```js
-const me = require('this.me');
+npm install -g this.me
 ```
 
-### Usage Example:
-Use it like this:
+Then, interact with `this.me` directly from your command line.
+
+
+### Usage in Node.js:
+
+## Installation
+
+```bash
+npm install this.me
+```
 
 ```js
 const ThisMe = require('this.me');
+// Create a new user identity
 const user = new ThisMe('John', 'Doe', '1990-01-01', 'mypassword123', '1234');
+// Retrieve the user's identity object
 const identityObject = user.getIdentityObject();
-// identityObject can now be passed to Cleaker for hashing
 ```
 
-## Understanding .ME
+## Core Principles
 
-##### Structure of this.me Package:
+- The `Me` class encapsulates personal information like name, last name, birthday, password, and PIN. This serves as the identity representation in our system.
 
-**User Data Model:** Define a class or object structure to hold the user's data.
-**Data Validation:** Functions to validate the input data.
-**Data Processing:** Preparing data for hashing (by Cleaker).
-**Exporting Data:** A method to export the processed data in a format that Cleaker can accept.
+The `all.this` collection of packages, along with the proposed `cleaker` functionality, is an approach to create a modular system where each module (like `this.text`, `this.video`, `this.img`, etc.) (all.this family) represents a distinct data structure or class. These modules, when combined with `cleaker`, generate unique **public and private key pairs**, essentially giving each instance its cryptographic identity.
 
+### Hashing and Digital Signatures
 
-# Setting up your Context. 	👋🏻👋🏼👋🏽👋🏾👋🏿
+**This.Me** leverages hashing to protect data integrity, with each transaction generating a unique, tamper-proof hash. Digital signatures, created using private keys, provide a layer of authenticity and non-repudiation, linking data unmistakably to its owner.
+
+## Contextual Environment
+
+**This.Me** adapts to various environments, enabling `.me` objects to function both locally and within a network. A `.me` object authenticated on a network accesses data beyond the local scope, while unauthenticated instances are confined to local data. This dual functionality ensures seamless interoperability and heightened security.
+
+## Setting up your Context. 	👋🏻👋🏼👋🏽👋🏾👋🏿
+
 Defining the **environment** and context in which your code runs, especially when you're interacting with intelligent agents or services like **me.**
 
 Having a clear declaration of the environment and the context can have a series of implications for security, interoperability, and clarity. The codebase is often vast, dynamic, and continually evolving. Given the dynamic nature of such environments, ensuring the integrity of the code and data becomes paramount. You wouldn't want an agent to execute or rely on code that has been tampered with or is different from the expected version. This is where hashing comes into play.
 
 `.me` objects to serve as both a local identity on the user's host machine and as an identity within a larger network. When a `.me` object is authenticated on a network, it can access data not only on the local host but also from other nodes within that network. Conversely, if it's not authenticated or recognized by the network, it should only access local data. Here's how this could be structured:
-
-### Local and Network Identity Management
-
-1. **Local Identity**:
-   - When a `.me` object is created, it's initially configured with access to local host resources.
-   - Users can manage their local profile, which includes their personal settings, preferences, and local data access permissions.
-2. **Network Identity**:
-   - To access resources on the network, a `.me` object must be authenticated against the network.
-   - Once authenticated, the `.me` object's hash is recognized across the network, granting the user access to network resources according to their permissions.
-3. **Access Control**:
-   - Both local and network resources use access control lists (ACLs) that are tied to the `.me` object's hash.
-   - These ACLs determine what resources the `.me` object can access and the level of interaction permitted (read, write, execute).
-4. **Data Fetching**:
-   - When fetching data, the system checks if the `.me` object is authenticated within the network.
-   - If authenticated, the `.me` object can retrieve data from across the network based on the established ACLs.
-   - If not authenticated, the `.me` object is limited to retrieving data from the local host.
-5. **CLI Functionality**:
-   - The CLI tool facilitates the creation of `.me` objects, management of profiles, and authentication processes.
-   - It includes commands to "login" to the network, "logout", or "sync" local profiles with network profiles.
-6. **Data Sharing and Security**:
-   - Data sharing across the network should be secure, with encryption mechanisms in place to protect data in transit and at rest.
-   - The `.me` object's unique hash can be part of the encryption key, ensuring that only the intended `.me` object can decrypt and access the shared data.
-
-### CLI Commands
-
-- `me init`: Initializes a new `.me` object on the local host.
-- `me login`: Authenticates the `.me` object against the network to access network resources.
-- `me logout`: De-authenticates the `.me` object from the network, reverting to local-only access.
-- `me sync`: Synchronizes local `.me` object data with the network profile.
-- `me fetch`: Retrieves data from the local host or network based on authentication status.
-
-By implementing this dual identity system, you enable a seamless transition for users between operating solely on their local device and engaging with a broader network, all while maintaining strict control over their data access rights.

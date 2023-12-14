@@ -7,7 +7,7 @@
   ...
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>This.Me src/me.js</title>
+  <title>This.Me src/cli/ishell/shell.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -107,7 +107,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>src/me.js</h1>
+                    <h1>src/cli/ishell/shell.js</h1>
                 </header>
                 
 
@@ -116,54 +116,148 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * Represents a user identity in the this.me system.
- */
-class Me {
-    /**
-     * Create a me instance.
-     * @param {string} name - The first name of the user.
-     * @param {string} lastname - The last name of the user.
-     * @param {string} birthday - The birthday of the user in YYYY-MM-DD format.
-     * @param {string} password - The password chosen by the user.
-     * @param {string} pin - The personal identification number chosen by the user.
-     */
-    constructor(name, lastname, birthday, password, pin) {
-        this.name = name;
-        this.lastname = lastname;
-        this.birthday = birthday;
-        this.password = password;
-        this.pin = pin;
-    }
+            <pre class="prettyprint source linenums"><code>import inquirer from 'inquirer';
+import path from 'path';
+import os from 'os';
+import fs from 'fs';
+import Me from '../../me.js';
 
-    /**
-     * Validates the user data. Throws an error if any field is empty.
-     * @throws Will throw an error if a required field is missing.
-     */
-    validateData() {
-        if (!this.name || !this.lastname || !this.birthday || !this.password || !this.pin) {
-            throw new Error("All fields must be filled");
-        }
-        // Further validation rules can be added here
+/***Interactive Shell:
+ * Leverages the `inquirer` package to provide an interactive shell experience with prompts.
+ * The `main` function orchestrates the CLI interactions.
+ */
+
+/** 
+ * View Existing Profiles, Create New Profile, Exit.
+ * @returns {Promise&lt;string>} The user's choice. 
+ */
+async function selectMe() {
+    const choices = ['View Existing Profiles', 'Create New Profile', 'Exit'];
+    const answer = await inquirer.prompt([{
+        type: 'list',
+        name: 'action',
+        message: 'What would you like to do?',
+        choices: choices
+    }]);
+    return answer.action;
+  }
+  
+  /**
+  * Prompts the user for details to create a new profile.
+  * @returns {Promise&lt;Me>} The new Me object with user details.
+  */
+  async function createMe() {
+    const questions = [
+        {
+            type: 'input',
+            name: 'name',
+            message: 'What is your first name?',
+            // Add validation as needed
+        },
+        {
+            type: 'input',
+            name: 'lastname',
+            message: 'What is your last name?',
+            // Add validation as needed
+        },
+        {
+          type: 'input',
+          name: 'birthday',
+          message: 'What is your birthday? (YYYY-MM-DD)',
+          validate: function(value) {
+              const pass = value.match(
+                  /^\d{4}-\d{2}-\d{2}$/
+              );
+              if (pass) {
+                  return true;
+              }
+              return 'Please enter a valid date (YYYY-MM-DD)';
+          }
+        },
+        {
+            type: 'password',
+            name: 'password',
+            message: 'Choose a password:',
+            // Add validation as needed
+        },
+        {
+            type: 'input',
+            name: 'pin',
+            message: 'Choose a PIN:',
+            // Add validation as needed
+        },
+        // ... Add more questions as needed
+    ];
+    const userDetails = await inquirer.prompt(questions);
+    return new Me(
+        userDetails.name, 
+        userDetails.lastname, 
+        userDetails.birthday,
+        userDetails.password, 
+        userDetails.pin
+    );
+  }
+  
+  /**
+  * Writes the .me object to the filesystem.
+  * @param {Me} meProfile - The Me object to be saved.
+  */
+  function writeMe(meProfile) {
+    const meDirectory = path.join(os.homedir(), '.me');
+    if (!fs.existsSync(meDirectory)) {
+        fs.mkdirSync(meDirectory, { recursive: true });
     }
     
-    /**
-     * Prepares and returns the identity object for hashing.
-     * @returns {Object} The identity object with user data.
-     */
-    getIdentityObject() {
-        this.validateData();
-        return {
-            name: this.name,
-            lastname: this.lastname,
-            birthday: this.birthday,
-            credentials: `${this.password}:${this.pin}` // Combining password and pin
-        };
+    const filePath = path.join(meDirectory, `${meProfile.name}.me`);
+    // Encrypting the data here before writing to the filesystem
+    //fs.writeFileSync(filePath, JSON.stringify(meProfile.getIdentityObject()));
+    //console.log('Profile created successfully.');
+    fs.writeFileSync(filePath, JSON.stringify(meProfile.getIdentityObject()));
+      console.log('Profile created successfully.');
+  }
+  
+  /**
+   * Lists all the .me profile file paths in the user's .me directory.
+   * @returns {string[]} An array of full file paths for each .me profile.
+   */
+  function listMeProfiles() {
+    const meDirectory = path.join(os.homedir(), '.me');
+    if (fs.existsSync(meDirectory)) {
+        const profileFiles = fs.readdirSync(meDirectory)
+            .filter(file => file.endsWith('.me'));
+        return profileFiles.map(file => path.join(meDirectory, file));
+    } else {
+        console.log('No profiles found.');
+        return [];
     }
-}
+  }
+  
+  /**
+   * Prompts the user to select a .me profile or go back to the main menu.
+   * @returns {Promise&lt;string>} The file path of the selected profile or 'back' to go to the main menu.
+   */
+  async function selectProfile() {
+    const profiles = listMeProfiles();
+    if (profiles.length === 0) {
+        console.log('No profiles found.');
+        return 'back';
+    }
+  
+    const choices = profiles.map(file => ({
+        name: path.basename(file, '.me'),
+        value: file
+    })).concat([{ name: 'Go Back to Main Menu', value: 'back' }]);
+  
+    const answer = await inquirer.prompt([{
+        type: 'list',
+        name: 'selectedProfile',
+        message: 'Select a profile to view or go back:',
+        choices: choices
+    }]);
+    return answer.selectedProfile;
+  }
 
-export default Me;
-</code></pre>
+  export {selectMe, createMe, writeMe, listMeProfiles, selectProfile};</code></pre>
         </article>
     </section>
 

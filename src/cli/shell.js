@@ -2,7 +2,7 @@ import inquirer from 'inquirer';
 import path from 'path';
 import os from 'os';
 import fs from 'fs';
-import Me from '../../me.js';
+import Me from '../me.js';
 
 /***Interactive Shell:
  * Leverages the `inquirer` package to provide an interactive shell experience with prompts.
@@ -139,4 +139,10 @@ async function selectMe() {
     return answer.selectedProfile;
   }
 
-  export {selectMe, createMe, writeMe, listMeProfiles, selectProfile};
+export const shell = {
+    selectMe,
+    createMe,
+    writeMe,
+    listMeProfiles,
+    selectProfile,
+  };

@@ -1,6 +1,6 @@
 {
   "name": "this.me",
-  "version": "2.8.1",
+  "version": "2.8.2",
   "description": "User-Centric OS.",
   "bin": {
     ".me": "./src/cli/main.js"
@@ -30,7 +30,6 @@
   "repoType": "NPM Package",
   "dependencies": {
     "commander": "^11.1.0",
-    "inquirer": "^9.2.12",
-    "taffydb": "^2.7.3"
+    "inquirer": "^9.2.12"
   }
 }
