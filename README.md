@@ -1,4 +1,5 @@
 # This.Me  
+<img src="./cleak_me-removebg.png" alt="SVG Image" style="width:89px;">
 <img src="./this.me.png" alt="SVG Image" style="width:89px;">
 
 **This.Me** redefines digital identity management through a cryptographic lens. Each user is equipped with a unique **'Me'** identity, secured by public-private key cryptography, enabling robust autonomous identity verification and transactional security.
@@ -8,7 +9,6 @@
 In essence, **This.Me** grants users a self-sovereign digital identity, fully within their control and independent from external entities.
 
 ### CLI Usage:
-
 Install globally to use `this.me` as a CLI tool:
 
 ```js
