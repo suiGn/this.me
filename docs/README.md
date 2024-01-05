@@ -2,9 +2,9 @@
 <img src="./cleak_me-removebg.png" alt="SVG Image" style="width:89px;">
 <img src="./this.me.png" alt="SVG Image" style="width:89px;">
 
-**This.Me** redefines digital identity management through a cryptographic lens. Each user is equipped with a unique **'Me'** identity, secured by public-private key cryptography, enabling robust autonomous identity verification and transactional security.
+**This.Me** defines a digital identity through a cryptographic lens. Each user is equipped with a unique **'Me'** identity, secured by public-private key cryptography, enabling robust autonomous identity verification and transactional security.
 
-**This.Me** goes beyond traditional security, incorporating hashing for unimpeachable data integrity and digital signatures for undeniable authenticity. Users gain unparalleled control over their digital footprint, marking a shift towards a user-centric model of data management.
+**This.Me** incorporates hashing for unimpeachable data integrity and digital signatures for undeniable authenticity. Users gain unparalleled control over their digital footprint, marking a shift towards a user-centric model of data management.
 
 In essence, **This.Me** grants users a self-sovereign digital identity, fully within their control and independent from external entities.
 
@@ -54,4 +54,5 @@ Defining the **environment** and context in which your code runs, especially whe
 
 Having a clear declaration of the environment and the context can have a series of implications for security, interoperability, and clarity. The codebase is often vast, dynamic, and continually evolving. Given the dynamic nature of such environments, ensuring the integrity of the code and data becomes paramount. You wouldn't want an agent to execute or rely on code that has been tampered with or is different from the expected version. This is where hashing comes into play.
 
-`.me` objects to serve as both a local identity on the user's host machine and as an identity within a larger network. When a `.me` object is authenticated on a network, it can access data not only on the local host but also from other nodes within that network. Conversely, if it's not authenticated or recognized by the network, it should only access local data. Here's how this could be structured:
+`.me` objects to serve as both a local identity on the user's host machine and as an identity within a larger network. When a `.me` object is authenticated on a network, it can access data not only on the local host but also from other nodes within that network. Conversely, if it's not authenticated or recognized by the network, it should only access local data. 
+

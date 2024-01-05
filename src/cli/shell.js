@@ -2,7 +2,7 @@ import inquirer from 'inquirer';
 import path from 'path';
 import os from 'os';
 import fs from 'fs';
-import Me from '../me.js';
+import Me from 'this.me';
 
 /***Interactive Shell:
  * Leverages the `inquirer` package to provide an interactive shell experience with prompts.
@@ -94,7 +94,7 @@ async function selectMe() {
     // Encrypting the data here before writing to the filesystem
     //fs.writeFileSync(filePath, JSON.stringify(meProfile.getIdentityObject()));
     //console.log('Profile created successfully.');
-    fs.writeFileSync(filePath, JSON.stringify(meProfile.getIdentityObject()));
+    fs.writeFileSync(filePath, JSON.stringify(meProfile.getMe()));
       console.log('Profile created successfully.');
   }
   
@@ -113,31 +113,84 @@ async function selectMe() {
         return [];
     }
   }
+
+/**
+ * Asks the user to verify their PIN.
+ * @param {Object} profile - The user's profile object containing their data, including the PIN.
+ * @returns {Promise<string>} Returns 'success' if the PIN is correct, 'back' to return to the previous menu.
+ */
+async function verifyPin(profile) {
+    while (true) {
+        const answer = await inquirer.prompt([{
+            type: 'password',
+            name: 'pin',
+            message: 'Enter your PIN to proceed:',
+        }]);
+
+        if (answer.pin === profile.pin) {
+            // Correct PIN
+            //console.log('Profile Data:', profile);
+            console.log(`Welcome ${profile.name}!`);
+            return 'success';
+        } else {
+            // Incorrect PIN
+            console.log('Incorrect PIN.');
+            const retryChoice = await inquirer.prompt([{
+                type: 'list',
+                name: 'action',
+                message: 'What would you like to do?',
+                choices: ['Try Again', 'Go Back']
+            }]);
+            if (retryChoice.action === 'Go Back') {
+                return 'back';
+            }
+        }
+    }
+}
   
-  /**
-   * Prompts the user to select a .me profile or go back to the main menu.
-   * @returns {Promise<string>} The file path of the selected profile or 'back' to go to the main menu.
-   */
-  async function selectProfile() {
+ /**
+ * Allows the user to select a .me profile from a list or go back to the main menu.
+ * After selecting a profile, the user is asked to verify their PIN.
+ * @returns {Promise<Object|string>} Returns the selected profile object upon successful PIN verification, or 'back' to indicate returning to the main menu.
+ */
+async function selectProfile() {
     const profiles = listMeProfiles();
     if (profiles.length === 0) {
         console.log('No profiles found.');
         return 'back';
     }
-  
+
     const choices = profiles.map(file => ({
         name: path.basename(file, '.me'),
         value: file
     })).concat([{ name: 'Go Back to Main Menu', value: 'back' }]);
-  
+
     const answer = await inquirer.prompt([{
         type: 'list',
         name: 'selectedProfile',
         message: 'Select a profile to view or go back:',
         choices: choices
     }]);
-    return answer.selectedProfile;
-  }
+
+    if (answer.selectedProfile === 'back') {
+        return 'back';
+    } else {
+        const profileData = fs.readFileSync(answer.selectedProfile, 'utf8');
+        const profile = JSON.parse(profileData);
+
+        const pinVerified = await verifyPin(profile);
+        if (!pinVerified) {
+            console.log('PIN verification failed. Returning to main menu.');
+            return 'back';
+        }
+        
+        // After successful PIN verification, proceed to a different section of the CLI.
+        // ... Transition to different CLI section logic goes here ...
+
+        return profile; // Return the profile data for further processing if needed.
+    }
+}
+
 
 export const shell = {
     selectMe,

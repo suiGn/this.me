@@ -1,6 +1,15 @@
+//index.js
 /**
- * @module 00-Index
+ * @module This.Me
  * @description
- * .Me Command Line Interface Functionalities.
- *  The CLI application's code structure is categorized into two main parts:
+ * This.Me adapts to various environments, enabling `.me` objects to function both locally and within a network. 
+ *  A `.me` object authenticated on a network accesses data beyond the local scope, 
+ *  while unauthenticated instances are confined to local data.
+ *  This dual functionality ensures seamless interoperability and heightened security.
  *  Command Definitions and Interactive Shell.*/
+
+// index.js in the `this.me` package
+export { default } from './src/me.js';
+console.log('this.me loaded successfully.');
+// this.me/index.js
+export { shell } from './src/cli/shell.js';

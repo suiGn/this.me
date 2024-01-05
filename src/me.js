@@ -1,3 +1,4 @@
+//src/me.js
 /**
  * Represents a user identity in the this.me system.
  */
@@ -30,16 +31,17 @@ class Me {
     }
     
     /**
-     * Prepares and returns the identity object for hashing.
-     * @returns {Object} The identity object with user data.
+     * Prepares and returns the identity object for hashing .me.
+     * @returns {Object} The identity object (.me) with user data.
      */
-    getIdentityObject() {
+    getMe() {
         this.validateData();
         return {
             name: this.name,
             lastname: this.lastname,
             birthday: this.birthday,
-            credentials: `${this.password}:${this.pin}` // Combining password and pin
+            password: this.password, // Password as a separate field
+            pin: this.pin           // Pin as a separate field
         };
     }
 }

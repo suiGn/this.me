@@ -113,7 +113,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-00-Index.html">00-Index</a></li><li><a href="module-CLI.html">CLI</a></li></ul><h3>Classes</h3><ul><li><a href="Me.html">Me</a></li></ul><h3>Global</h3><ul><li><a href="global.html#createMe">createMe</a></li><li><a href="global.html#listMeProfiles">listMeProfiles</a></li><li><a href="global.html#selectMe">selectMe</a></li><li><a href="global.html#selectProfile">selectProfile</a></li><li><a href="global.html#writeMe">writeMe</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="This.module_Me.html">Me</a></li><li><a href="module-CLI.html">CLI</a></li></ul><h3>Classes</h3><ul><li><a href="Me.html">Me</a></li></ul><h3>Global</h3><ul><li><a href="global.html#createMe">createMe</a></li><li><a href="global.html#listMeProfiles">listMeProfiles</a></li><li><a href="global.html#searchImages">searchImages</a></li><li><a href="global.html#selectMe">selectMe</a></li><li><a href="global.html#selectProfile">selectProfile</a></li><li><a href="global.html#verifyPin">verifyPin</a></li><li><a href="global.html#writeMe">writeMe</a></li></ul></div>
                 
             </nav>
         </div>
@@ -130,7 +130,8 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
+            <pre class="prettyprint source linenums"><code>//src/me.js
+/**
  * Represents a user identity in the this.me system.
  */
 class Me {
@@ -162,16 +163,17 @@ class Me {
     }
     
     /**
-     * Prepares and returns the identity object for hashing.
-     * @returns {Object} The identity object with user data.
+     * Prepares and returns the identity object for hashing .me.
+     * @returns {Object} The identity object (.me) with user data.
      */
-    getIdentityObject() {
+    getMe() {
         this.validateData();
         return {
             name: this.name,
             lastname: this.lastname,
             birthday: this.birthday,
-            credentials: `${this.password}:${this.pin}` // Combining password and pin
+            password: this.password, // Password as a separate field
+            pin: this.pin           // Pin as a separate field
         };
     }
 }

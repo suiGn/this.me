@@ -7,7 +7,7 @@
   ...
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>This.Me index.js</title>
+  <title>This.Me src/searchImages.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -121,7 +121,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>index.js</h1>
+                    <h1>src/searchImages.js</h1>
                 </header>
                 
 
@@ -130,22 +130,37 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>//index.js
-/**
- * @module This.Me
- * @description
- * This.Me adapts to various environments, enabling `.me` objects to function both locally and within a network. 
- *  A `.me` object authenticated on a network accesses data beyond the local scope, 
- *  while unauthenticated instances are confined to local data.
- *  This dual functionality ensures seamless interoperability and heightened security.
- *  Command Definitions and Interactive Shell.*/
+            <pre class="prettyprint source linenums"><code>/**
+ * Filters and displays images based on the user's search input.
+ * It searches through the filenames of the images in each gallery.
+ * The function is case-insensitive and matches any part of the filename.
+ * 
+ * @example
+ * // Assuming there's an input field with id 'searchInput' and images in galleries.
+ * // User types 'example' in the search input.
+ * searchImages();
+ * // Images with 'example' in their filenames will be displayed.
+ */
+function searchImages() {
+    var input, filter, gallery, img, src, i;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    gallery = document.getElementsByClassName("gallery");
 
-// index.js in the `this.me` package
-export { default } from './src/me.js';
-console.log('this.me loaded successfully.');
-// this.me/index.js
-export { shell } from './src/cli/shell.js';
-</code></pre>
+    for (var g = 0; g &lt; gallery.length; g++) {
+        img = gallery[g].getElementsByTagName("img");
+
+        for (i = 0; i &lt; img.length; i++) {
+            src = img[i].src;
+            var fileName = src.substring(src.lastIndexOf('/') + 1);
+            if (fileName.toUpperCase().indexOf(filter) > -1) {
+                img[i].style.display = "";
+            } else {
+                img[i].style.display = "none";
+            }
+        }
+    }
+}</code></pre>
         </article>
     </section>
 
