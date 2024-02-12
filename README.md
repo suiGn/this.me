@@ -7,7 +7,6 @@
 
 
 1. **Install `this.me`:**
-
    Open your terminal and run the following command to install the `this.me` package:
 
    ```js
@@ -15,7 +14,6 @@
    ```
 
 2. **Import `Me` in Your Project:**
-
    In the JavaScript file where you want to use `this.me`, import the `Me` class.
 
    ```js
@@ -23,7 +21,6 @@
    ```
 
 3. **Create an Instance of `Me`:**
-
    Instantiate the `Me` class with the required user details.
 
    ```js
@@ -31,7 +28,6 @@
    ```
 
 4. **Validate and Use the Instance:**
-
    Utilize the instance for user data validation and preparation for cryptographic actions.
 
    ```js
@@ -49,18 +45,15 @@ This quick start guide provides a straightforward path to incorporating `this.me
 -----
 
 # What is All.This?
-
 **This.me** serves as the **identity representation** in our system.
 
 The `[all.this](https://www.neurons.me/what-is-all-this)` collection of packages, along with the proposed `cleaker` functionality, is an approach to create a modular system where each module (like `this.text`, `this.video`, `this.img`, etc.) (all.this family) represents a distinct data structure or class. These modules, when combined with `cleaker`, generate unique **public and private key pairs**, essentially giving each instance its cryptographic identity.
 
 
 ## Contextual Environment
-
 **This.Me** adapts to various environments, enabling `.me` objects to function both locally and within a network. A `.me` object authenticated on a network accesses data beyond the local scope, while unauthenticated instances are confined to local data. This dual functionality ensures seamless interoperability and heightened security.
 
 ## Setting up your Context. 	👋🏻👋🏼👋🏽👋🏾👋🏿
-
 Defining the **environment** and context in which your code runs, especially when you're interacting with intelligent agents or services like **me.**
 
 Having a clear declaration of the environment and the context can have a series of implications for security, interoperability, and clarity. The codebase is often vast, dynamic, and continually evolving. Given the dynamic nature of such environments, ensuring the integrity of the code and data becomes paramount. You wouldn't want an agent to execute or rely on code that has been tampered with or is different from the expected version. This is where hashing comes into play.
