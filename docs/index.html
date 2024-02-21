@@ -111,7 +111,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="This.module_Me.html">Me</a></li><li><a href="module-CLI.html">CLI</a></li></ul><h3>Classes</h3><ul><li><a href="Me.html">Me</a></li></ul><h3>Global</h3><ul><li><a href="global.html#createMe">createMe</a></li><li><a href="global.html#listMeProfiles">listMeProfiles</a></li><li><a href="global.html#searchImages">searchImages</a></li><li><a href="global.html#selectMe">selectMe</a></li><li><a href="global.html#selectProfile">selectProfile</a></li><li><a href="global.html#verifyPin">verifyPin</a></li><li><a href="global.html#writeMe">writeMe</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="This.module_Me.html">Me</a></li><li><a href="module-CLI.html">CLI</a></li></ul><h3>Classes</h3><ul><li><a href="Me.html">Me</a></li></ul><h3>Global</h3><ul><li><a href="global.html#createMe">createMe</a></li><li><a href="global.html#listMeProfiles">listMeProfiles</a></li><li><a href="global.html#selectMe">selectMe</a></li><li><a href="global.html#selectProfile">selectProfile</a></li><li><a href="global.html#verifyPin">verifyPin</a></li><li><a href="global.html#writeMe">writeMe</a></li></ul></div>
                 
             </nav>
         </div>
@@ -146,33 +146,46 @@
 
     <section>
         <article><h1>This.Me</h1>
-<img src="./cleak_me-removebg.png" alt="SVG Image" style="width:89px;">
-<img src="./this.me.png" alt="SVG Image" style="width:89px;">
-<p><strong>This.Me</strong> defines a digital identity through a cryptographic lens. Each user is equipped with a unique <strong>'Me'</strong> identity, secured by public-private key cryptography, enabling robust autonomous identity verification and transactional security.</p>
-<p><strong>This.Me</strong> incorporates hashing for unimpeachable data integrity and digital signatures for undeniable authenticity. Users gain unparalleled control over their digital footprint, marking a shift towards a user-centric model of data management.</p>
-<p>In essence, <strong>This.Me</strong> grants users a self-sovereign digital identity, fully within their control and independent from external entities.</p>
-<h3>CLI Usage:</h3>
-<p>Install globally to use <code>this.me</code> as a CLI tool:</p>
-<pre class="prettyprint source lang-js"><code>npm install -g this.me
+<img src="./docs/cleak_me-removebg.png" alt="SVG Image" style="width:89px;">
+<img src="./docs/this.me.png" alt="SVG Image" style="width:89px;">
+<p><strong>This.Me</strong> is a class focused on encapsulating user identity, specifically crafted to facilitate the creation of instances ready for hashing and cryptographic signature generation. It opens the door to coding and decoding through &quot;me&quot; signatures, offering a modular framework that prioritizes privacy and integrity in application-wide identity management.</p>
+<ol>
+<li>
+<p><strong>Install <code>this.me</code>:</strong>
+Open your terminal and run the following command to install the <code>this.me</code> package:</p>
+<pre class="prettyprint source lang-js"><code>npm install this.me
 </code></pre>
-<p>Then, interact with <code>this.me</code> directly from your command line.</p>
-<h3>Usage in Node.js:</h3>
-<h2>Installation</h2>
-<pre class="prettyprint source lang-bash"><code>npm install this.me
+</li>
+<li>
+<p><strong>Import <code>Me</code> in Your Project:</strong>
+In the JavaScript file where you want to use <code>this.me</code>, import the <code>Me</code> class.</p>
+<pre class="prettyprint source lang-js"><code>import Me from 'this.me';
 </code></pre>
-<pre class="prettyprint source lang-js"><code>const ThisMe = require('this.me');
-// Create a new user identity
-const user = new ThisMe('John', 'Doe', '1990-01-01', 'mypassword123', '1234');
-// Retrieve the user's identity object
-const identityObject = user.getIdentityObject();
+</li>
+<li>
+<p><strong>Create an Instance of <code>Me</code>:</strong>
+Instantiate the <code>Me</code> class with the required user details.</p>
+<pre class="prettyprint source lang-js"><code>const user = new Me('John', 'Doe', '1990-01-01', 'password123', '1234');
 </code></pre>
-<h2>Core Principles</h2>
-<ul>
-<li>The <code>Me</code> class encapsulates personal information like name, last name, birthday, password, and PIN. This serves as the identity representation in our system.</li>
-</ul>
-<p>The <code>all.this</code> collection of packages, along with the proposed <code>cleaker</code> functionality, is an approach to create a modular system where each module (like <code>this.text</code>, <code>this.video</code>, <code>this.img</code>, etc.) (all.this family) represents a distinct data structure or class. These modules, when combined with <code>cleaker</code>, generate unique <strong>public and private key pairs</strong>, essentially giving each instance its cryptographic identity.</p>
-<h3>Hashing and Digital Signatures</h3>
-<p><strong>This.Me</strong> leverages hashing to protect data integrity, with each transaction generating a unique, tamper-proof hash. Digital signatures, created using private keys, provide a layer of authenticity and non-repudiation, linking data unmistakably to its owner.</p>
+</li>
+<li>
+<p><strong>Validate and Use the Instance:</strong>
+Utilize the instance for user data validation and preparation for cryptographic actions.</p>
+<pre class="prettyprint source lang-js"><code>try {
+    const identity = user.getMe();
+    // Ready for hashing and cryptographic signatures
+} catch (error) {
+    console.error(error.message);
+    // Error handling for missing fields
+}
+</code></pre>
+</li>
+</ol>
+<p>This quick start guide provides a straightforward path to incorporating <code>this.me</code> into your project, enabling you to manage user identities and prepare them for secure cryptographic processes efficiently.</p>
+<hr>
+<h1>What is All.This?</h1>
+<p><strong>This.me</strong> serves as the <strong>identity representation</strong> in our system.</p>
+<p>The <code>[all.this](https://www.neurons.me/what-is-all-this)</code> collection of packages, along with the proposed <code>cleaker</code> functionality, is an approach to create a modular system where each module (like <code>this.text</code>, <code>this.video</code>, <code>this.img</code>, etc.) (all.this family) represents a distinct data structure or class. These modules, when combined with <code>cleaker</code>, generate unique <strong>public and private key pairs</strong>, essentially giving each instance its cryptographic identity.</p>
 <h2>Contextual Environment</h2>
 <p><strong>This.Me</strong> adapts to various environments, enabling <code>.me</code> objects to function both locally and within a network. A <code>.me</code> object authenticated on a network accesses data beyond the local scope, while unauthenticated instances are confined to local data. This dual functionality ensures seamless interoperability and heightened security.</p>
 <h2>Setting up your Context. 	👋🏻👋🏼👋🏽👋🏾👋🏿</h2>
